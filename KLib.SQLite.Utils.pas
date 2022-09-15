@@ -72,9 +72,18 @@ end;
 procedure executeQuery(sqlStatement: string; connection: TConnection);
 var
   _query: TQuery;
+  //  _isSelect: string;
 begin
   _query := getTQuery(connection, sqlStatement);
+  //  _isSelect := UpperCase(sqlStatement).StartsWith('SELECT');
+  //  if _isSelect then
+  //  begin
+  //    _query.Open;
+  //  end
+  //  else
+  //  begin
   _query.ExecSQL;
+  //  end;
   FreeAndNil(_query);
 end;
 

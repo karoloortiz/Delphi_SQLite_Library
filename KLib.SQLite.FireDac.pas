@@ -115,14 +115,10 @@ begin
   with connection do
   begin
     LoginPrompt := false;
-
-    DriverName := 'SQLite';
-
-    with Params do
-    begin
-      Values['Database'] := database;
-      Values['Password'] := password; //TODO
-    end;
+    Params.Clear;
+    Params.Add('DriverID=SQLite');
+    Params.Database := database;
+    //    Values['Password'] := password; //TODO
   end;
   Result := connection;
 end;
