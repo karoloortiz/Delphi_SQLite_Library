@@ -63,7 +63,7 @@ implementation
 
 uses
   KLib.SQLite.Validate,
-  Klib.Utils,
+  Klib.Utils, KLib.Windows,
   FireDAC.VCLUI.Wait,
   FireDAC.Stan.Def, FireDAC.Stan.Async,
   FireDac.DApt,
@@ -110,16 +110,25 @@ end;
 function getSQLiteTFDConnection(database: string; password: string = EMPTY_STRING): TFDConnection;
 var
   connection: TFDConnection;
+
+  _database: string;
 begin
+  _database := database;
+  if not checkIfIsAPath(database) then
+  begin
+    _database := getCombinedPathWithCurrentDir(_database);
+  end;
+
   connection := TFDConnection.Create(nil);
   with connection do
   begin
     LoginPrompt := false;
     Params.Clear;
     Params.Add('DriverID=SQLite');
-    Params.Database := database;
+    Params.Database := _database;
     //    Values['Password'] := password; //TODO
   end;
+
   Result := connection;
 end;
 
