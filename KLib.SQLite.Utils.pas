@@ -39,7 +39,7 @@ unit KLib.SQLite.Utils;
 interface
 
 uses
-  KLib.SQLite.DriverPort,
+  KLib.SQLite.Driver,
   KLib.Constants;
 
 procedure emptyTable(tableName: string; connection: TConnection);

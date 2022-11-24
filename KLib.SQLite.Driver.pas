@@ -34,7 +34,7 @@
   POSSIBILITY OF SUCH DAMAGE.
 }
 
-unit KLib.SQLite.DriverPort;
+unit KLib.SQLite.Driver;
 
 interface
 
